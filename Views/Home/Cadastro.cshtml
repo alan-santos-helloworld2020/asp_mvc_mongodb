@@ -1,0 +1,50 @@
+@model sistema.Models.Clientes
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<div class="col s12 l8 push-l2">
+
+    <p class="center">Cadastro de Clientes</p>
+    <form asp-controller="Home" asp-action="Cadastro" method="post">
+
+
+        <div class="input-field col s12">
+            <input type="text" asp-for="nome" id="nome" required>
+            <label asp-for="nome">Nome</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="tel" asp-for="telefone" id="telefone" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$" placeholder="(00) 00000-0000" required>
+            <label asp-for="telefone">Telefone</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="email" asp-for="email" id="email" required>
+            <label asp-for="email">Email</label>
+        </div>
+
+        <div class="input-field col s12 l6">
+            <input type="text" asp-for="cep" id="cep" pattern="[0-9]{5}-[0-9]{3}" required>
+            <label asp-for="cep">Cep</label>
+        </div>
+
+        <div class="col s12">
+            <button type="submit" class="btn waves-effect waves-light right">salvar<i
+                    class="material-icons right">send</i></button>
+        </div>
+
+        <div class="col s12" style="margin-top:5px;"></div>
+
+        <div class="col s12">
+            <button type="reset" class="btn waves-effect waves-light red right">limpar<i
+                    class="material-icons right">delete</i></button>
+        </div>
+
+    </form>
+
+</div>
+
+<div class="row">
+    @await Html.PartialAsync("~/Views/Partials/rodape.cshtml")
+</div>

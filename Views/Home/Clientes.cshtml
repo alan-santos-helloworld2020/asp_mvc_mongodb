@@ -1,0 +1,40 @@
+@model IEnumerable<sistema.Models.Clientes>
+
+
+@{
+    
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="col s12 l10 push-l1">
+    <table class="responsive-table centered">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Cep</th>
+            </tr>
+        </thead>
+        <tbody>
+    <p class="center">Clientes</p>
+    @if(Model.Count() != 0){
+
+            @foreach(var cl in Model){
+
+                <tr>
+                    <td>@cl.data</td>
+                    <td>@cl.nome</td>
+                    <td>@cl.telefone</td>
+                    <td>@cl.email</td>
+                    <td>@cl.cep</td>
+                    <td><a class="btn-floating btn-small red" onclick="deletar(event)" asp-controller="Home" asp-action="Deletar" asp-route-id="@cl.id"><i class="material-icons">clear</i></a></td>
+                    <td><a class="btn-floating btn-small blue" onclick="editar(@System.Text.Json.JsonSerializer.Serialize(cl),event)" asp-controller="Home" asp-action="Editar"><i class="material-icons">edit</i></a></td>
+                </tr>
+            
+            }
+    }
+    </tbody>
+    </table>
+</div>
